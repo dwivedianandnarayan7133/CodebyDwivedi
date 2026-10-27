@@ -149,7 +149,7 @@ app.use((err, req, res, _next) => {
 });
 
 // ─── Server Startup ───────────────────────────────────────────────────────────
-if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+if (!process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log('');
     console.log('╔══════════════════════════════════════════════╗');
