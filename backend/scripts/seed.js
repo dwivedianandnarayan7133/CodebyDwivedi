@@ -1,117 +1,143 @@
 /**
- * Seed Script — Populate default Social Links
- *
- * Run once to fill MongoDB with Anand's default social profiles.
- * Safe to re-run — skips if docs already exist (upsert by platform).
- *
- * Usage:
- *   node server/scripts/seed.js
+ * Comprehensive Database Seed Script
+ * Populates MongoDB with all Projects, Education, Certifications, Skills,
+ * Social Links, and Resume metadata matching Anand Narayan Dwivedi's resume.
  */
 
 'use strict';
 
 require('dotenv').config();
 
-const mongoose   = require('mongoose');
-const connectDB  = require('../config/db');
+const mongoose = require('mongoose');
+const connectDB = require('../config/db');
+const staticData = require('../config/staticData');
+
+const Project = require('../models/Project');
+const Education = require('../models/Education');
+const Certification = require('../models/Certification');
+const Skill = require('../models/Skill');
 const SocialLink = require('../models/SocialLink');
+const Resume = require('../models/Resume');
+const path = require('path');
+const fs = require('fs');
 
-const DEFAULT_LINKS = [
-  {
-    platform:   'github',
-    label:      'GitHub',
-    url:        'https://github.com/',      // ← replace with real URL
-    username:   '@anandnarayan',
-    icon:       'fab fa-github',
-    colorClass: 'github',
-    order:      1,
-    isActive:   true,
-  },
-  {
-    platform:   'linkedin',
-    label:      'LinkedIn',
-    url:        'https://linkedin.com/',    // ← replace
-    username:   'Anand Narayan Dwivedi',
-    icon:       'fab fa-linkedin-in',
-    colorClass: 'linkedin',
-    order:      2,
-    isActive:   true,
-  },
-  {
-    platform:   'youtube',
-    label:      'YouTube',
-    url:        'https://youtube.com/',     // ← replace
-    username:   '@AnandDevChannel',
-    icon:       'fab fa-youtube',
-    colorClass: 'youtube',
-    order:      3,
-    isActive:   true,
-  },
-  {
-    platform:   'twitter',
-    label:      'Twitter / X',
-    url:        'https://twitter.com/',     // ← replace
-    username:   '@ananddev',
-    icon:       'fab fa-x-twitter',
-    colorClass: 'twitter',
-    order:      4,
-    isActive:   true,
-  },
-  {
-    platform:   'stackoverflow',
-    label:      'StackOverflow',
-    url:        'https://stackoverflow.com/', // ← replace
-    username:   'Anand N. Dwivedi',
-    icon:       'fab fa-stack-overflow',
-    colorClass: 'stackoverflow',
-    order:      5,
-    isActive:   true,
-  },
-  {
-    platform:   'discord',
-    label:      'Discord',
-    url:        'https://discord.com/',     // ← replace
-    username:   'anand#0001',
-    icon:       'fab fa-discord',
-    colorClass: 'discord',
-    order:      6,
-    isActive:   true,
-  },
-  {
-    platform:   'gmail',
-    label:      'Gmail',
-    url:        'mailto:dwivedianandnarayan@gmail.com',
-    username:   'dwivedianandnarayan@gmail.com',
-    icon:       'fab fa-google',
-    colorClass: 'gmail',
-    order:      7,
-    isActive:   true,
-  },
-];
+async function seedDatabase() {
+  try {
+    console.log('Connecting to database...');
+    await connectDB();
+    console.log('Connected to MongoDB. Seeding data...');
 
-async function seed() {
-  await connectDB();
+    // 1. Projects
+    await Project.deleteMany({});
+    const projectDocs = staticData.projects.map(p => ({
+      title: p.title,
+      subtitle: p.subtitle,
+      date: p.date,
+      description: p.description,
+      features: p.features,
+      techStack: p.techStack,
+      icon: p.icon,
+      category: p.category,
+      githubUrl: p.githubUrl,
+      liveUrl: p.liveUrl,
+      directUrl: p.directUrl || p.liveUrl,
+      order: p.order,
+      isActive: true,
+    }));
+    await Project.insertMany(projectDocs);
+    console.log(`✅ Seeded ${projectDocs.length} Projects.`);
 
-  let created = 0;
-  let skipped = 0;
+    // 2. Education
+    await Education.deleteMany({});
+    const eduDocs = staticData.education.map(e => ({
+      degree: e.degree,
+      institution: e.institution,
+      dateRange: e.dateRange,
+      location: e.location,
+      description: e.description,
+      badgeText: e.badgeText,
+      icon: e.icon,
+      order: e.order,
+      isActive: true,
+    }));
+    await Education.insertMany(eduDocs);
+    console.log(`✅ Seeded ${eduDocs.length} Education items.`);
 
-  for (const item of DEFAULT_LINKS) {
-    const existing = await SocialLink.findOne({ platform: item.platform });
-    if (existing) {
-      console.log(`⏭️   Skipped (already exists): ${item.platform}`);
-      skipped++;
-    } else {
-      await SocialLink.create(item);
-      console.log(`✅  Created: ${item.platform} → ${item.url}`);
-      created++;
+    // 3. Certifications
+    await Certification.deleteMany({});
+    const certDocs = staticData.certifications.map(c => ({
+      title: c.title,
+      issuer: c.issuer,
+      date: c.date,
+      topics: c.topics,
+      description: c.description,
+      badgeText: c.badgeText,
+      icon: c.icon,
+      imageUrl: c.imageUrl || null,
+      pdfUrl: c.pdfUrl || null,
+      credentialId: c.credentialId || null,
+      verifyUrl: c.verifyUrl || null,
+      order: c.order,
+      isActive: true,
+    }));
+    await Certification.insertMany(certDocs);
+    console.log(`✅ Seeded ${certDocs.length} Certifications.`);
+
+    // 4. Skills
+    await Skill.deleteMany({});
+    const skillDocs = staticData.skills.map(s => ({
+      category: s.category,
+      categoryIcon: s.categoryIcon,
+      isTag: s.isTag,
+      name: s.name,
+      icon: s.icon,
+      percentage: s.percentage,
+      color: s.color,
+      order: s.order,
+      isActive: true,
+    }));
+    await Skill.insertMany(skillDocs);
+    console.log(`✅ Seeded ${skillDocs.length} Skills.`);
+
+    // 5. Social Links
+    await SocialLink.deleteMany({});
+    const socialDocs = staticData.social.map(s => ({
+      platform: s.platform,
+      label: s.label,
+      url: s.url,
+      username: s.username,
+      icon: s.icon,
+      colorClass: s.colorClass,
+      order: s.order,
+      isActive: true,
+    }));
+    await SocialLink.insertMany(socialDocs);
+    console.log(`✅ Seeded ${socialDocs.length} Social Links.`);
+
+    // 6. Resume
+    const resumePath = path.join(__dirname, '..', '..', 'public', 'assets', 'resume.pdf');
+    if (fs.existsSync(resumePath)) {
+      const stats = fs.statSync(resumePath);
+      await Resume.deleteMany({});
+      await Resume.create({
+        originalName: 'Anand_Narayan_Dwivedi_Resume.pdf',
+        storedName: 'resume.pdf',
+        filePath: resumePath,
+        sizeBytes: stats.size,
+        sizeMB: parseFloat((stats.size / (1024 * 1024)).toFixed(2)),
+        mimeType: 'application/pdf',
+        downloadAs: 'Anand_Narayan_Dwivedi_Resume.pdf',
+        isActive: true,
+      });
+      console.log('✅ Seeded active Resume record.');
     }
-  }
 
-  console.log(`\n🌱  Seed complete. Created: ${created}, Skipped: ${skipped}`);
-  process.exit(0);
+    console.log('\n🎉 Database seeding completed successfully!\n');
+    process.exit(0);
+  } catch (err) {
+    console.error('❌ Seeding failed:', err.message);
+    process.exit(1);
+  }
 }
 
-seed().catch((err) => {
-  console.error('❌  Seed failed:', err.message);
-  process.exit(1);
-});
+seedDatabase();

@@ -2,6 +2,7 @@
 
 const express = require('express');
 const Education = require('../models/Education');
+const staticData = require('../config/staticData');
 const router = express.Router();
 
 function requireAdmin(req, res, next) {
@@ -12,28 +13,40 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-// Public: GET active
+// Public: GET active education
 router.get('/', async (req, res) => {
   try {
-    const data = await Education.find({ isActive: true }).sort({ order: 1, createdAt: -1 });
+    if (req.dbUnavailable) {
+      return res.json({ success: true, count: staticData.education.length, data: staticData.education });
+    }
+    const data = await Education.find({ isActive: true }).sort({ order: 1, createdAt: 1 });
+    if (!data || data.length === 0) {
+      return res.json({ success: true, count: staticData.education.length, data: staticData.education });
+    }
     res.json({ success: true, count: data.length, data });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    res.json({ success: true, count: staticData.education.length, data: staticData.education });
   }
 });
 
 // Admin: GET all
 router.get('/all', requireAdmin, async (req, res) => {
   try {
-    const data = await Education.find().sort({ order: 1, createdAt: -1 });
+    if (req.dbUnavailable) {
+      return res.json({ success: true, count: staticData.education.length, data: staticData.education });
+    }
+    const data = await Education.find().sort({ order: 1, createdAt: 1 });
     res.json({ success: true, count: data.length, data });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    res.json({ success: true, count: staticData.education.length, data: staticData.education });
   }
 });
 
 // Admin: POST new
 router.post('/', requireAdmin, async (req, res) => {
+  if (req.dbUnavailable) {
+    return res.status(503).json({ success: false, message: 'Database is currently offline.' });
+  }
   try {
     const data = await Education.create(req.body);
     res.status(201).json({ success: true, data });
@@ -44,6 +57,9 @@ router.post('/', requireAdmin, async (req, res) => {
 
 // Admin: PUT update
 router.put('/:id', requireAdmin, async (req, res) => {
+  if (req.dbUnavailable) {
+    return res.status(503).json({ success: false, message: 'Database is currently offline.' });
+  }
   try {
     const data = await Education.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
     if (!data) return res.status(404).json({ success: false, message: 'Not found' });
@@ -55,6 +71,9 @@ router.put('/:id', requireAdmin, async (req, res) => {
 
 // Admin: PATCH toggle status
 router.patch('/:id/toggle', requireAdmin, async (req, res) => {
+  if (req.dbUnavailable) {
+    return res.status(503).json({ success: false, message: 'Database is currently offline.' });
+  }
   try {
     const data = await Education.findById(req.params.id);
     if (!data) return res.status(404).json({ success: false, message: 'Not found' });
@@ -68,6 +87,9 @@ router.patch('/:id/toggle', requireAdmin, async (req, res) => {
 
 // Admin: DELETE
 router.delete('/:id', requireAdmin, async (req, res) => {
+  if (req.dbUnavailable) {
+    return res.status(503).json({ success: false, message: 'Database is currently offline.' });
+  }
   try {
     const data = await Education.findByIdAndDelete(req.params.id);
     if (!data) return res.status(404).json({ success: false, message: 'Not found' });

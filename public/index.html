@@ -5,57 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- SEO Meta Tags -->
+  <!-- Primary Meta Tags -->
   <title>Anand Narayan Dwivedi | Full Stack Developer Portfolio</title>
-  <meta name="description" content="Portfolio of Anand Narayan Dwivedi — Full Stack Developer skilled in JavaScript, React, Node.js. B.Tech CSE student from Lucknow, India." />
-  <meta name="keywords" content="Anand Narayan Dwivedi, Full Stack Developer, React Developer, Node.js, Portfolio, Lucknow, B.Tech CSE" />
+  <meta name="title" content="Anand Narayan Dwivedi | Full Stack Developer" />
+  <meta name="description" content="Official portfolio of Anand Narayan Dwivedi — Full Stack Developer experienced in MERN, MySQL, Django, REST APIs, and responsive web applications. B.Tech CSE student from Lucknow, India." />
+  <meta name="keywords" content="Anand Narayan Dwivedi, Full Stack Developer, MERN, React, Node.js, Express, Django, Python, Portfolio, Lucknow, B.Tech CSE, WanderLust, Shree Online" />
   <meta name="author" content="Anand Narayan Dwivedi" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Anand Narayan Dwivedi | Full Stack Developer" />
-  <meta property="og:description" content="Full Stack Developer skilled in JavaScript, React, Node.js and modern web technologies." />
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="Anand Narayan Dwivedi | Full Stack Developer" />
+  <meta property="og:description" content="Explore projects, certifications, technical skills, and experience in MERN, Django, and modern full-stack web engineering." />
   <meta property="og:url" content="https://anandnarayan.dev" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Anand Narayan Dwivedi | Full Stack Developer" />
-  <meta name="twitter:description" content="Full Stack Developer | React | Node.js | JavaScript" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://anandnarayan.dev" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Devicon for Tech Icons -->
+  <!-- Devicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
 
-  <!-- Main CSS -->
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
 
+  <noscript>
+    <style>
+      .animate-on-scroll { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
   <!-- Favicon placeholder -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
 </head>
 <body class="dark-mode" data-theme="dark">
 
   <!-- ===================== NAVBAR ===================== -->
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="#hero" class="nav-logo" aria-label="Home">
+      <a href="#hero" class="nav-logo" aria-label="Anand Narayan Dwivedi Home">
         <span class="logo-bracket">&lt;</span>AND<span class="logo-dot">.</span>DEV<span class="logo-bracket">/&gt;</span>
       </a>
 
       <ul class="nav-links" id="navLinks" role="menubar">
         <li role="none"><a href="#about" role="menuitem" class="nav-link">About</a></li>
-        <li role="none"><a href="#skills" role="menuitem" class="nav-link">Skills</a></li>
         <li role="none"><a href="#projects" role="menuitem" class="nav-link">Projects</a></li>
+        <li role="none"><a href="#skills" role="menuitem" class="nav-link">Skills</a></li>
         <li role="none"><a href="#education" role="menuitem" class="nav-link">Education</a></li>
         <li role="none"><a href="#certifications" role="menuitem" class="nav-link">Certifications</a></li>
         <li role="none"><a href="#social" role="menuitem" class="nav-link">Connect</a></li>
@@ -66,15 +65,15 @@
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle Theme">
           <i class="fas fa-moon" id="themeIcon"></i>
         </button>
-        <a href="/api/resume" class="btn btn-primary btn-sm" id="resumeBtn"
+        <a href="assets/resume.pdf" class="btn btn-primary btn-sm" id="resumeBtn"
            download="Anand_Narayan_Dwivedi_Resume.pdf"
-           aria-label="Download Resume">
-          <i class="fas fa-download"></i> Resume
+           title="Download Anand Narayan Dwivedi Resume (PDF)">
+          <i class="fas fa-file-download"></i> Resume
         </a>
-        <a href="/admin" class="btn btn-outline btn-sm" aria-label="Admin Login" title="Admin Control Panel">
+        <a href="/admin" class="btn btn-outline btn-sm" aria-label="Admin Panel" title="Admin Dashboard">
           <i class="fas fa-lock"></i>
         </a>
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <button class="hamburger" id="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -82,67 +81,59 @@
   </nav>
 
   <!-- ===================== HERO ===================== -->
-  <section class="hero" id="hero" aria-label="Hero section">
-    <div class="hero-bg-grid"></div>
+  <section class="hero" id="hero" aria-label="Hero Introduction">
     <div class="hero-particles" id="heroParticles"></div>
 
     <div class="hero-content">
-      <div class="hero-badge animate-fade-in">
-        <span class="status-dot"></span> Available for opportunities
+      <div class="hero-badge animate-on-scroll">
+        <span class="status-dot"></span> Available for Software Engineering Opportunities
       </div>
 
-      <p class="hero-greeting animate-slide-up delay-1">Hello World, I'm</p>
-      <h1 class="hero-name animate-slide-up delay-2">
-        Anand Narayan<br /><span class="name-accent">Dwivedi</span>
+      <p class="hero-greeting animate-on-scroll">Hello, World! I am</p>
+      <h1 class="hero-name animate-on-scroll">
+        Anand Narayan <span class="name-accent">Dwivedi</span>
       </h1>
 
-      <div class="hero-role animate-slide-up delay-3">
+      <div class="hero-role animate-on-scroll">
         <span class="role-prefix">&lt;</span>
-        <span class="typed-text" id="typedText"></span>
+        <span class="typed-text" id="typedText">Full Stack Developer</span>
         <span class="cursor-blink">|</span>
         <span class="role-suffix">/&gt;</span>
       </div>
 
-      <p class="hero-tagline animate-slide-up delay-4">
-        Building scalable web applications with modern technologies.<br />
-        Passionate about clean code, great UX, and continuous learning.
+      <p class="hero-tagline animate-on-scroll">
+        Specializing in building robust full-stack web applications with MERN, MySQL, Django, and REST APIs.
+        Passionate about scalable software design, clean code architecture, and AI-accelerated development.
       </p>
 
-      <div class="hero-actions animate-slide-up delay-5">
+      <div class="hero-actions animate-on-scroll">
         <a href="#projects" class="btn btn-primary btn-lg" id="viewProjectsBtn">
-          <i class="fas fa-rocket"></i> View Projects
+          <i class="fas fa-rocket"></i> Explore Projects
         </a>
-        <a href="/api/resume" class="btn btn-outline btn-lg" id="downloadResumeBtn"
+        <a href="assets/resume.pdf" class="btn btn-outline btn-lg" id="downloadResumeBtn"
            download="Anand_Narayan_Dwivedi_Resume.pdf">
           <i class="fas fa-file-pdf"></i> Download Resume
         </a>
         <a href="#contact" class="btn btn-ghost btn-lg" id="contactMeBtn">
-          <i class="fas fa-paper-plane"></i> Contact Me
+          <i class="fas fa-paper-plane"></i> Get in Touch
         </a>
       </div>
 
-      <div class="hero-stats animate-fade-in delay-6">
+      <div class="hero-stats animate-on-scroll">
         <div class="stat-item">
-          <span class="stat-number" data-target="2">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Projects</span>
+          <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Full-Stack Projects</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span>
+          <span class="stat-number" data-target="4">0</span><span class="stat-suffix">+</span>
           <span class="stat-label">Certifications</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Years Learning</span>
+          <span class="stat-number" data-target="80">0</span><span class="stat-suffix">.1%</span>
+          <span class="stat-label">B.Tech Aggregate</span>
         </div>
-      </div>
-    </div>
-
-    <div class="hero-scroll-indicator" aria-label="Scroll down">
-      <span>Scroll</span>
-      <div class="scroll-arrow">
-        <i class="fas fa-chevron-down"></i>
       </div>
     </div>
   </section>
@@ -151,13 +142,13 @@
   <section class="section about-section" id="about" aria-labelledby="aboutHeading">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// about me</span>
-        <h2 class="section-title" id="aboutHeading">Who I Am</h2>
-        <p class="section-subtitle">A brief look at my background and what drives me</p>
+        <span class="section-tag">// 01. overview</span>
+        <h2 class="section-title" id="aboutHeading">About Me</h2>
+        <p class="section-subtitle">Dedicated developer with strong fundamentals in modern web engineering & software development</p>
       </div>
 
       <div class="about-grid">
-        <div class="about-avatar-col">
+        <div class="about-avatar-col animate-on-scroll">
           <div class="avatar-wrapper">
             <div class="avatar-glow"></div>
             <div class="avatar-ring">
@@ -165,21 +156,22 @@
                 <span class="avatar-initials">AND</span>
               </div>
             </div>
-            <div class="avatar-badge">
-              <i class="fas fa-code"></i>
+            <div class="avatar-badge" title="Full Stack Developer">
+              <i class="fas fa-terminal"></i>
             </div>
           </div>
+
           <div class="contact-quick">
             <div class="quick-info">
               <i class="fas fa-map-marker-alt"></i>
-              <span>Lucknow, India</span>
+              <span>Lucknow, Uttar Pradesh, India</span>
             </div>
             <div class="quick-info">
               <i class="fas fa-envelope"></i>
               <a href="mailto:dwivedianandnarayan@gmail.com">dwivedianandnarayan@gmail.com</a>
             </div>
             <div class="quick-info">
-              <i class="fas fa-phone"></i>
+              <i class="fas fa-phone-alt"></i>
               <a href="tel:+919120367133">+91 9120367133</a>
             </div>
             <div class="quick-info">
@@ -189,43 +181,26 @@
           </div>
         </div>
 
-        <div class="about-text-col">
-          <h3 class="about-subtitle">Full Stack Developer & CS Student</h3>
+        <div class="about-text-col animate-on-scroll">
+          <h3 class="about-subtitle">Full Stack Developer & Problem Solver</h3>
           <p class="about-desc">
-            I'm a passionate Full Stack Developer currently pursuing a <strong>B.Tech in Computer Science Engineering</strong> at Bansal Institute of Engineering & Technology, Lucknow.
+            I am a Full Stack Developer with hands-on experience in <strong>MERN (MongoDB, Express, React, Node.js), MySQL, Django, REST APIs</strong>, and responsive web application development. Currently pursuing a <strong>B.Tech in Computer Science & Engineering</strong> at Bansal Institute of Engineering & Technology, Lucknow (maintaining 80.1% aggregate).
           </p>
           <p class="about-desc">
-            My journey in tech started during my Diploma in CSE, where I discovered a deep love for building web applications. I specialize in <strong>JavaScript, React, Node.js</strong>, and crafting end-to-end solutions that are both functional and beautiful.
+            My background combines strong computer science foundations (OOP, DBMS, Data Structures & Algorithms) with real-world engineering experience. I build production-grade web systems, from property booking portals (<strong>WanderLust</strong>) to AI-assisted cybercafe operations systems (<strong>Shree Online</strong>) and academic portals (<strong>LMS</strong>).
           </p>
           <p class="about-desc">
-            When I'm not coding, I'm exploring new technologies, contributing to projects, or sharpening my <strong>Data Structures & Algorithms</strong> skills. I believe in writing clean, maintainable code and building applications that make a real impact.
+            Passionate about modern software tooling, Prompt Engineering, cloud workflows (GDG Google Cloud Study Jams 3rd rank holder), and writing clean, scalable, maintainable code that delivers real impact.
           </p>
 
           <div class="about-highlights">
-            <div class="highlight-chip"><i class="fas fa-check-circle"></i> Problem Solver</div>
-            <div class="highlight-chip"><i class="fas fa-check-circle"></i> Team Player</div>
-            <div class="highlight-chip"><i class="fas fa-check-circle"></i> Continuous Learner</div>
-            <div class="highlight-chip"><i class="fas fa-check-circle"></i> Detail Oriented</div>
+            <div class="highlight-chip"><i class="fas fa-check-circle"></i> MERN Stack</div>
+            <div class="highlight-chip"><i class="fas fa-check-circle"></i> Python & Django</div>
+            <div class="highlight-chip"><i class="fas fa-check-circle"></i> REST API Engineering</div>
+            <div class="highlight-chip"><i class="fas fa-check-circle"></i> DSA with Java</div>
+            <div class="highlight-chip"><i class="fas fa-check-circle"></i> Prompt Engineering & AI</div>
+            <div class="highlight-chip"><i class="fas fa-check-circle"></i> Relational & NoSQL DBs</div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== SKILLS ===================== -->
-  <section class="section skills-section" id="skills" aria-labelledby="skillsHeading">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">// tech stack</span>
-        <h2 class="section-title" id="skillsHeading">Skills & Technologies</h2>
-        <p class="section-subtitle">Technologies I work with on a daily basis</p>
-      </div>
-
-      <!-- Skills will be dynamically injected by main.js from /api/skills -->
-      <div class="skills-grid" id="skillsGrid">
-        <div class="social-loading">
-          <div class="social-skeleton"></div>
-          <div class="social-skeleton"></div>
         </div>
       </div>
     </div>
@@ -235,17 +210,28 @@
   <section class="section projects-section" id="projects" aria-labelledby="projectsHeading">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// my work</span>
+        <span class="section-tag">// 02. portfolio</span>
         <h2 class="section-title" id="projectsHeading">Featured Projects</h2>
-        <p class="section-subtitle">Things I've built with passion and purpose</p>
+        <p class="section-subtitle">Real-world applications built with modern architectures — click any card or preview button for an interactive walkthrough</p>
       </div>
 
-      <!-- Projects will be dynamically injected via main.js from /api/projects -->
       <div class="projects-grid" id="projectsGrid">
-        <div class="social-loading">
-          <div class="social-skeleton"></div>
-          <div class="social-skeleton"></div>
-        </div>
+        <!-- Rendered dynamically by main.js with clickable preview triggers -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section class="section skills-section" id="skills" aria-labelledby="skillsHeading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 03. capabilities</span>
+        <h2 class="section-title" id="skillsHeading">Skills &amp; Technologies</h2>
+        <p class="section-subtitle">Proficiencies in programming languages, web frameworks, databases, and engineering tools</p>
+      </div>
+
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Injected dynamically by main.js -->
       </div>
     </div>
   </section>
@@ -254,36 +240,43 @@
   <section class="section education-section" id="education" aria-labelledby="educationHeading">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// my journey</span>
+        <span class="section-tag">// 04. qualifications</span>
         <h2 class="section-title" id="educationHeading">Education</h2>
-        <p class="section-subtitle">Academic background and qualifications</p>
+        <p class="section-subtitle">Formal academic background in Computer Science &amp; Engineering</p>
       </div>
 
-      <!-- Education timeline is dynamically injected via main.js from /api/education -->
       <div class="timeline" id="educationTimeline">
-        <div class="social-loading">
-          <div class="social-skeleton"></div>
-          <div class="social-skeleton"></div>
-        </div>
+        <!-- Rendered dynamically by main.js -->
       </div>
     </div>
   </section>
 
-  <!-- ===================== CERTIFICATIONS & TRAINING ===================== -->
+  <!-- ===================== CERTIFICATIONS ===================== -->
   <section class="section cert-section" id="certifications" aria-labelledby="certHeading">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// achievements</span>
+        <span class="section-tag">// 05. credentials</span>
         <h2 class="section-title" id="certHeading">Certifications &amp; Training</h2>
-        <p class="section-subtitle">Continuous learning and professional development</p>
+        <p class="section-subtitle">Verified professional training programs and industry certifications</p>
       </div>
 
-      <!-- Certifications cards are dynamically injected via main.js from /api/certifications -->
       <div class="cert-grid" id="certGrid">
-        <div class="social-loading">
-          <div class="social-skeleton"></div>
-          <div class="social-skeleton"></div>
-        </div>
+        <!-- Rendered dynamically by main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ACHIEVEMENTS ===================== -->
+  <section class="section achievements-section" id="achievements" aria-labelledby="achieveHeading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 06. honors</span>
+        <h2 class="section-title" id="achieveHeading">Awards &amp; Achievements</h2>
+        <p class="section-subtitle">Recognitions earned in technical competitions and hands-on implementations</p>
+      </div>
+
+      <div class="achievements-grid" id="achievementsGrid">
+        <!-- Rendered dynamically by main.js -->
       </div>
     </div>
   </section>
@@ -292,20 +285,13 @@
   <section class="section social-section" id="social" aria-labelledby="socialHeading">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// let's connect</span>
-        <h2 class="section-title" id="socialHeading">Find Me Online</h2>
-        <p class="section-subtitle">Connect with me across platforms — let's build something great together</p>
+        <span class="section-tag">// 07. network</span>
+        <h2 class="section-title" id="socialHeading">Connections &amp; Profiles</h2>
+        <p class="section-subtitle">Connect with me on LinkedIn, GitHub, LeetCode, or reach out directly</p>
       </div>
 
-      <!-- Social cards are dynamically injected by main.js from /api/social -->
       <div class="social-grid" id="socialGrid">
-        <!-- Loading skeleton shown while fetching -->
-        <div class="social-loading" id="socialLoading" aria-live="polite">
-          <div class="social-skeleton"></div>
-          <div class="social-skeleton"></div>
-          <div class="social-skeleton"></div>
-          <div class="social-skeleton"></div>
-        </div>
+        <!-- Rendered dynamically by main.js with LeetCode, GitHub, LinkedIn, Gmail, Phone -->
       </div>
     </div>
   </section>
@@ -314,30 +300,29 @@
   <section class="section contact-section" id="contact" aria-labelledby="contactHeading">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// get in touch</span>
+        <span class="section-tag">// 08. message</span>
         <h2 class="section-title" id="contactHeading">Contact Me</h2>
-        <p class="section-subtitle">Have a project in mind? Let's talk!</p>
+        <p class="section-subtitle">Have an opening or project? Drop me a message below or email directly!</p>
       </div>
 
       <div class="contact-grid">
-
         <div class="contact-info-col animate-on-scroll">
           <div class="contact-info-cards">
-            <div class="contact-info-card" id="contact-email-card">
+            <div class="contact-info-card">
               <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
               <div>
-                <h4>Email</h4>
+                <h4>Direct Email</h4>
                 <a href="mailto:dwivedianandnarayan@gmail.com">dwivedianandnarayan@gmail.com</a>
               </div>
             </div>
-            <div class="contact-info-card" id="contact-phone-card">
-              <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon"><i class="fas fa-phone-alt"></i></div>
               <div>
-                <h4>Phone</h4>
+                <h4>Phone / WhatsApp</h4>
                 <a href="tel:+919120367133">+91 9120367133</a>
               </div>
             </div>
-            <div class="contact-info-card" id="contact-location-card">
+            <div class="contact-info-card">
               <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
               <div>
                 <h4>Location</h4>
@@ -347,9 +332,9 @@
           </div>
 
           <div class="contact-cta-box">
-            <p>Currently <strong>open to internships</strong>, freelance projects, and full-time opportunities.</p>
-            <a href="mailto:dwivedianandnarayan@gmail.com" class="btn btn-primary btn-md" id="emailDirectBtn">
-              <i class="fas fa-paper-plane"></i> Send Email
+            <p>Open to <strong>Software Developer Roles, Full-Stack Engineering, and Internships</strong>.</p>
+            <a href="mailto:dwivedianandnarayan@gmail.com" class="btn btn-primary btn-md">
+              <i class="fas fa-paper-plane"></i> Send Direct Email
             </a>
           </div>
         </div>
@@ -376,7 +361,7 @@
               <label for="contactSubject">Subject</label>
               <div class="input-wrapper">
                 <i class="fas fa-tag input-icon"></i>
-                <input type="text" id="contactSubject" name="subject" placeholder="Project Collaboration" />
+                <input type="text" id="contactSubject" name="subject" placeholder="Software Developer Opportunity" />
               </div>
             </div>
 
@@ -384,7 +369,7 @@
               <label for="contactMessage">Message</label>
               <div class="input-wrapper textarea-wrapper">
                 <i class="fas fa-comment-dots input-icon textarea-input-icon"></i>
-                <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                <textarea id="contactMessage" name="message" rows="5" placeholder="Hi Anand, I came across your portfolio and would like to discuss..." required></textarea>
               </div>
             </div>
 
@@ -396,7 +381,6 @@
             <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
           </form>
         </div>
-
       </div>
     </div>
   </section>
@@ -406,32 +390,31 @@
     <div class="footer-top">
       <div class="container footer-top-inner">
         <div class="footer-brand">
-          <a href="#hero" class="footer-logo" aria-label="Back to top">
+          <a href="#hero" class="nav-logo" aria-label="Back to top">
             <span class="logo-bracket">&lt;</span>AND<span class="logo-dot">.</span>DEV<span class="logo-bracket">/&gt;</span>
           </a>
-          <p>Building the web, one line at a time.</p>
+          <p>Anand Narayan Dwivedi — Full Stack Developer. Building scalable, beautiful, and high-performance web systems.</p>
         </div>
 
         <div class="footer-links">
-          <h4>Quick Links</h4>
+          <h4>Navigation</h4>
           <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="/admin" target="_blank"><i class="fas fa-lock" style="font-size: 0.8em;"></i> Admin Panel</a></li>
+            <li><a href="#skills">Skills &amp; Tech</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="/admin"><i class="fas fa-lock"></i> Admin Panel</a></li>
           </ul>
         </div>
 
         <div class="footer-social">
-          <h4>Follow Me</h4>
-          <!-- Dynamically injected by main.js from /api/social -->
+          <h4>Connect</h4>
           <div class="footer-social-icons" id="footerSocialIcons">
-            <!-- fallback icons, replaced by JS -->
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-            <a href="mailto:dwivedianandnarayan@gmail.com" class="footer-social-icon" aria-label="Gmail"><i class="fab fa-google"></i></a>
+            <a href="https://github.com/dwivedianandnarayan7133" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/anand-narayan-dwivedi-b6807033b/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://leetcode.com/u/Anand_Narayan_Dwivedi/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LeetCode"><i class="fas fa-code"></i></a>
+            <a href="https://www.skills.google/public_profiles/a77c70e5-d738-4e4b-a995-f6032d5ce5ef" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Google Cloud Badges"><i class="fab fa-google"></i></a>
+            <a href="mailto:dwivedianandnarayan@gmail.com" class="footer-social-icon" aria-label="Gmail"><i class="fas fa-envelope"></i></a>
           </div>
         </div>
       </div>
@@ -440,22 +423,122 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="footerYear"></span> Anand Narayan Dwivedi. All rights reserved.</p>
-        <p class="footer-made-with">
-          Crafted with <i class="fas fa-heart" style="color: #ff4d6d;"></i> and lots of <i class="fas fa-coffee" style="color: #c9a96e;"></i>
-        </p>
+        <p>Crafted with clean code &amp; precision engineering</p>
       </div>
     </div>
   </footer>
 
-  <!-- Back to Top -->
+  <!-- ===================== CLICKABLE PROJECT PREVIEW MODAL ===================== -->
+  <div id="projectPreviewModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+    <div class="preview-modal-card">
+      <div class="preview-modal-header">
+        <div class="preview-browser-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="preview-browser-address-bar">
+          <i class="fas fa-lock"></i>
+          <span id="previewModalUrl">https://wanderlust-anand.dev</span>
+        </div>
+        <div class="preview-modal-controls">
+          <button class="device-btn active" id="btnDeviceDesktop" title="Desktop View"><i class="fas fa-desktop"></i> Desktop</button>
+          <button class="device-btn" id="btnDeviceMobile" title="Mobile View"><i class="fas fa-mobile-alt"></i> Mobile</button>
+          <button class="modal-close-btn" id="closePreviewModal" aria-label="Close Preview Modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="preview-modal-body">
+        <!-- Live Interactive Viewport -->
+        <div class="interactive-viewport" id="previewInteractiveViewport">
+          <div class="viewport-app-header">
+            <div class="viewport-brand" id="viewportAppBrand">
+              <i class="fas fa-hotel"></i> <span id="viewportAppTitle">WanderLust</span>
+            </div>
+            <div class="viewport-live-tag">
+              <span class="status-dot"></span> Interactive Sandbox
+            </div>
+          </div>
+          <div class="viewport-screen" id="viewportAppScreen">
+            <!-- Injected by main.js based on project -->
+          </div>
+        </div>
+
+        <h3 id="previewModalTitle">Project Title</h3>
+        <p class="preview-modal-desc" id="previewModalDesc">Project description goes here.</p>
+
+        <div class="preview-feature-box">
+          <h4>Key Engineering Features &amp; System Capabilities</h4>
+          <ul id="previewModalFeatures"></ul>
+        </div>
+
+        <div class="project-tech-stack" id="previewModalStack"></div>
+      </div>
+
+      <div class="preview-modal-footer">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="previewModalGitHub">
+          <i class="fab fa-github"></i> View GitHub Repo
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="previewModalLiveDemo">
+          <i class="fas fa-external-link-alt"></i> Launch Live Deployment ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== DIRECT CERTIFICATE LIGHTBOX MODAL ===================== -->
+  <div id="certificateLightboxModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
+    <div class="cert-modal-card">
+      <div class="cert-modal-header">
+        <div class="cert-modal-info">
+          <span class="cert-modal-badge" id="certModalBadge"><i class="fas fa-check-circle"></i> Verified Credential</span>
+          <h3 id="certModalTitle">Certificate Title</h3>
+          <p id="certModalIssuer"><i class="fas fa-building"></i> Issuer Name</p>
+        </div>
+        <button class="modal-close-btn" id="closeCertModal" aria-label="Close Certificate Modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="cert-modal-body">
+        <div class="cert-modal-meta-bar">
+          <div class="cert-modal-cred-id" id="certModalCredBox">
+            <span class="meta-label">Credential ID:</span>
+            <code id="certModalCredId">ID12345678</code>
+            <button class="cert-copy-btn" id="certModalCopyBtn" title="Copy Credential ID">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="cert-modal-date" id="certModalDate">
+            <i class="fas fa-calendar-alt"></i> <span>Issued Date</span>
+          </div>
+        </div>
+
+        <div class="cert-modal-display" id="certModalDisplay">
+          <img id="certModalImage" src="" alt="Certificate" class="cert-modal-img" />
+        </div>
+      </div>
+
+      <div class="cert-modal-footer">
+        <a href="#" id="certModalVerifyLink" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <i class="fas fa-external-link-alt"></i> Verify with Issuer
+        </a>
+        <a href="#" id="certModalDownloadBtn" target="_blank" download class="btn btn-primary">
+          <i class="fas fa-download"></i> Download Original Certificate
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- Toast Notification -->
+  <!-- Toast Container -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Main JS -->
+  <!-- Scripts -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>

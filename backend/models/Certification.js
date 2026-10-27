@@ -29,6 +29,26 @@ const CertificationSchema = new mongoose.Schema({
     type: String,
     default: 'fas fa-certificate',
   },
+  imageUrl: {
+    type: String,
+    trim: true,
+    default: null,
+  },
+  pdfUrl: {
+    type: String,
+    trim: true,
+    default: null,
+  },
+  credentialId: {
+    type: String,
+    trim: true,
+    default: null,
+  },
+  verifyUrl: {
+    type: String,
+    trim: true,
+    default: null,
+  },
   badgeText: {
     type: String,
     trim: true,

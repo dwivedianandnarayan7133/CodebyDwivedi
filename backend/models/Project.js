@@ -29,6 +29,22 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  subtitle: {
+    type: String,
+    trim: true,
+  },
+  date: {
+    type: String,
+    trim: true,
+  },
+  category: {
+    type: String,
+    trim: true,
+  },
+  directUrl: {
+    type: String,
+    trim: true,
+  },
   icon: {
     type: String,
     default: 'fas fa-rocket',

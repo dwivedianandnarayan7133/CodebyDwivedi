@@ -2,6 +2,7 @@
 
 const express = require('express');
 const Project = require('../models/Project');
+const staticData = require('../config/staticData');
 const router = express.Router();
 
 function requireAdmin(req, res, next) {
@@ -12,28 +13,40 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-// Public: GET active projects
+// Public: GET active projects (with automatic fallback to staticData)
 router.get('/', async (req, res) => {
   try {
+    if (req.dbUnavailable) {
+      return res.json({ success: true, count: staticData.projects.length, data: staticData.projects });
+    }
     const projects = await Project.find({ isActive: true }).sort({ order: 1, createdAt: 1 });
+    if (!projects || projects.length === 0) {
+      return res.json({ success: true, count: staticData.projects.length, data: staticData.projects });
+    }
     res.json({ success: true, count: projects.length, data: projects });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    res.json({ success: true, count: staticData.projects.length, data: staticData.projects });
   }
 });
 
 // Admin: GET all projects
 router.get('/all', requireAdmin, async (req, res) => {
   try {
+    if (req.dbUnavailable) {
+      return res.json({ success: true, count: staticData.projects.length, data: staticData.projects });
+    }
     const projects = await Project.find().sort({ order: 1, createdAt: 1 });
     res.json({ success: true, count: projects.length, data: projects });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    res.json({ success: true, count: staticData.projects.length, data: staticData.projects });
   }
 });
 
 // Admin: POST new project
 router.post('/', requireAdmin, async (req, res) => {
+  if (req.dbUnavailable) {
+    return res.status(503).json({ success: false, message: 'Database is currently offline. Please configure MongoDB.' });
+  }
   try {
     const project = await Project.create(req.body);
     res.status(201).json({ success: true, data: project });
@@ -44,6 +57,9 @@ router.post('/', requireAdmin, async (req, res) => {
 
 // Admin: PUT update project
 router.put('/:id', requireAdmin, async (req, res) => {
+  if (req.dbUnavailable) {
+    return res.status(503).json({ success: false, message: 'Database is currently offline.' });
+  }
   try {
     const project = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
     if (!project) return res.status(404).json({ success: false, message: 'Not found' });
@@ -55,6 +71,9 @@ router.put('/:id', requireAdmin, async (req, res) => {
 
 // Admin: PATCH toggle status
 router.patch('/:id/toggle', requireAdmin, async (req, res) => {
+  if (req.dbUnavailable) {
+    return res.status(503).json({ success: false, message: 'Database is currently offline.' });
+  }
   try {
     const project = await Project.findById(req.params.id);
     if (!project) return res.status(404).json({ success: false, message: 'Not found' });
@@ -68,6 +87,9 @@ router.patch('/:id/toggle', requireAdmin, async (req, res) => {
 
 // Admin: DELETE project
 router.delete('/:id', requireAdmin, async (req, res) => {
+  if (req.dbUnavailable) {
+    return res.status(503).json({ success: false, message: 'Database is currently offline.' });
+  }
   try {
     const project = await Project.findByIdAndDelete(req.params.id);
     if (!project) return res.status(404).json({ success: false, message: 'Not found' });

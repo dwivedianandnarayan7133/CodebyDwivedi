@@ -47,13 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 
+  const API_BASE = (() => {
+    if (window.location.protocol === 'file:' || window.location.port === '5500') {
+      return 'http://localhost:3001';
+    }
+    return '';
+  })();
+
   // --- API Wrapper ---
   async function apiFetch(endpoint, options = {}) {
     if (!adminKey) throw new Error('No admin key');
     const headers = { 'x-admin-key': adminKey, ...options.headers };
     
     try {
-      const res = await fetch(`/api${endpoint}`, { ...options, headers });
+      const res = await fetch(`${API_BASE}/api${endpoint}`, { ...options, headers });
       const data = await res.json();
       if (!res.ok) {
         if (res.status === 401) {
@@ -183,15 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Resume Logic ---
   async function loadResumeInfo() {
     try {
-      const res = await fetch('/api/resume/info');
+      const res = await fetch(`${API_BASE}/api/resume/info`);
       const { data } = await res.json();
       if (!data) throw new Error('No data');
       el.resumeInfoContainer.innerHTML = `
         <p><strong>Name:</strong> ${data.originalName}</p>
         <p><strong>Size:</strong> ${data.sizeMB} MB</p>
+        <p><strong>Status:</strong> <span class="badge badge-active">Permanent Download Active</span></p>
         <p><strong>Uploaded:</strong> ${new Date(data.uploadedAt).toLocaleDateString()}</p>
         <div class="actions mt-4" style="display:flex;gap:1rem;">
-          <a href="/api/resume" target="_blank" class="btn btn-secondary"><i class="fas fa-download"></i> Download</a>
+          <a href="${API_BASE}/api/resume" target="_blank" class="btn btn-secondary"><i class="fas fa-download"></i> Download</a>
           <button id="delete-resume" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
         </div>`;
       document.getElementById('delete-resume').addEventListener('click', async () => {
@@ -225,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(); formData.append('resume', currentFile);
     el.uploadResumeBtn.disabled = true; el.uploadResumeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
     try {
-      const res = await fetch('/api/resume', { method: 'POST', headers: { 'x-admin-key': adminKey }, body: formData });
+      const res = await fetch(`${API_BASE}/api/resume`, { method: 'POST', headers: { 'x-admin-key': adminKey }, body: formData });
       const data = await res.json();
       if(!res.ok) throw new Error(data.message);
       showToast('Resume uploaded successfully');
@@ -256,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) { el.socialsTbody.innerHTML = `<tr><td colspan="6" class="error-text">Failed to load socials</td></tr>`; }
   }
 
-  el.addSocialBtn.addEventListener('click', () => { el.socialForm.reset(); document.getElementById('social-id').value = ''; el.socialFormcard?.classList.remove('hidden'); el.socialFormCard.classList.remove('hidden'); el.socialFormTitle.textContent = 'Add Social Link'; });
+  el.addSocialBtn.addEventListener('click', () => { el.socialForm.reset(); document.getElementById('social-id').value = ''; el.socialFormCard.classList.remove('hidden'); el.socialFormTitle.textContent = 'Add Social Link'; });
   el.cancelSocialBtn.addEventListener('click', (e) => { e.preventDefault(); el.socialFormCard.classList.add('hidden'); });
 
   el.socialForm.addEventListener('submit', async (e) => {
@@ -480,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function bindCrudEvents(toggleCls, delCls, editCls, endpoint, refreshFn, populateFn) {
     document.querySelectorAll(toggleCls).forEach(btn => {
       btn.addEventListener('click', async (e) => {
-        try { await apiFetch(`${endpoint}/${e.target.getAttribute('data-id')}/toggle`, { method: 'PATCH' }); refreshFn(); } 
+        try { await apiFetch(`${endpoint}/${e.currentTarget.getAttribute('data-id')}/toggle`, { method: 'PATCH' }); refreshFn(); } 
         catch(err) { showToast(err.message, 'error'); }
       });
     });
